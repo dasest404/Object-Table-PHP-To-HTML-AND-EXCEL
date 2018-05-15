@@ -1,0 +1,120 @@
+
+.fht-table{
+	border: 0 none;
+	height: auto;
+	width: auto;
+	border-collapse: collapse;
+	border-spacing: 0;
+	table-layout: fixed; /* Algoritmo de distribucion fijo */
+    white-space:nowrap;  /* Impide los saltos de línea automáticos */
+}
+
+.ContenedorTabla {
+	height: 400px;
+	margin: 0 auto;
+	overflow: auto;
+	width: 1024px;
+	position: relative;
+}
+
+caption.caption{
+	font-size: 13px;
+	font-weight: bold;
+	font-family: cursive;
+	color: #c5c5c5;
+	padding-bottom: 5px;
+}
+caption.CaptionT3{
+    background-color: #cccccc;
+    caption-side: bottom;
+    color: #6D6564;
+    font-size: 20px;
+    font-weight: 700;
+    padding-top: 11px;
+    text-align: center;
+}
+.header, .main {
+    display: inline-block;
+    height: auto;
+    width: 100%;
+}
+.titulosHeader {
+    border-bottom: 1px solid #e8bb25;
+    height: auto;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    width: 100%;
+} 
+
+.celda_encabezado_general {
+    background-color: #003399;
+    border: 1px solid #cccccc;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 2px 4px;
+    text-align: center;
+}
+._Separador{
+	background-color: #ffffff;
+	height: 12px;
+	border-left: 1px solid #cccccc;
+	border-right: 1px solid #cccccc;
+	width: 7px;
+}
+._Separador div{
+	width: 4px;
+}
+.celda_normal {
+    /*background-color: #fff;*/
+    border: 1px solid #cccccc;
+    padding: 2px 4px;
+}
+
+.excel_cell{
+	border: 1px solid #CCCCCC;
+	color: #222;
+	text-align: center;
+	font-size: 13px;
+	font-weight:  normal;
+	padding: 4px;
+	white-space: pre-line;
+	empty-cells: show;
+}
+._cell_header{
+	border: 1px solid #0000FF;
+	color: #222222;
+	text-align: center;
+	font-weight:  normal;
+	padding: 4px;
+	white-space: pre-line;
+	empty-cells: show;
+	background-color: #EEEEEE;
+	font-weight: bold;
+	font-size: 15px;
+}
+._cell_Default{
+	border: 1px solid #CB4335;
+	color: #931D1D;
+	font-family:initial;
+	font-size: 13px;
+	font-weight:  normal;
+	padding: 4px;
+	white-space: pre-line;
+	empty-cells: show;
+	background-color: antiquewhite;
+	text-align: left;
+}
+
+._cell_Default2{ border: 1px solid #19287A; color: #931D1D; font-size: 10px; font-weight: bold; padding: 4px; white-space: pre-line; empty-cells: show; background-color: aqua; text-align: right;}
+
+.excel_cell div{
+	width: 30px;
+	height: 20px;
+}
+
+.celda_popup{
+	border: 1px solid #cccccc;
+    padding: 4px;
+    position: relative;
+}
