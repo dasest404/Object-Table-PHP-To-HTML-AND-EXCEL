@@ -124,7 +124,7 @@ for ($xTr=0; $xTr <10 ; $xTr++)
 	for ($xTd=0; $xTd < 8; $xTd++)
 	{ 
 		$lobCell = new Cell();
-		$lobCell->setClass('excel_cell _cell_Default');
+		$lobCell->setClass('_cell_Default');
 		
 		if( $xTr == 4 )
 		{

@@ -66,11 +66,13 @@ for ($xTr=0; $xTr <10 ; $xTr++)
 		{
 			$lobCell->setDataType('Money_f_1_before_USD');
 			$lobCell->setCapsulaHtml('<div class="fechas"><strong>##</strong></div>');
-			$lobCell->setHtml( rand() );
-			$lobCell->setValue( rand() );
+			$lnuValue = rand();
+			$lobCell->setHtml( $lnuValue );
+			$lobCell->setValue( $lnuValue );
 		}
 		else
 		{
+			//$lobCell->setStyle('border: 1px solid #19287A; color: #931D1D; font-size: 10px; font-weight: bold; padding: 4px; white-space: pre-line; empty-cells: show; background-color: aqua; text-align: right;');
 			$lobCell->setHtml('(F'.$xTr.',C'.$xTd.')');
 			$lobCell->setValue('(F'.$xTr.',C'.$xTd.')');
 		}

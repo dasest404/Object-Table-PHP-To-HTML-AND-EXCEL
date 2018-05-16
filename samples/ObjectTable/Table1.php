@@ -31,8 +31,7 @@ $lobRow = new Row();
 for ( $xTh=1; $xTh <= $lnuColumnas ; $xTh++ )
 { 
 	$lobCell = new Cell();
-	$lobCell->setClass('_cell_header');
-	//$lobCell->setStyle('border: 1px solid #19287A; color: #931D1D; font-size: 10px; font-weight: bold; padding: 4px; white-space: pre-line; empty-cells: show; background-color: aqua; text-align: right;');
+	$lobCell->setClass('_header');
 	$lobCell->setType('th');
 	$lobCell->setHtml('Titulo '.$xTh);
 	$lobCell->setValue('Titulo '.$xTh);
@@ -52,19 +51,16 @@ for ($xTr=1; $xTr <=$lnuRowTbody ; $xTr++)
 	for ($xTd=0; $xTd < $lnuColumnas; $xTd++)
 	{ 
 		
-		$lobCell = new Cell();
-		$lobCell->setDataType('Date_d_d-m-Y');
+		$lobCell    = new Cell();
+		$lobCell->setDataType('Money_f_2__USD');
 		$lobCell->mcreateIdExcel( $xTr,$xTd);
 		$lstIdExcel = $lobCell->getIdExcel();
 		$lobCell->setId($lstIdExcel);
-		$lobCell->setClass('_cell_Default');
-		//$lobCell->setCapsulaHtml('<strong>##</strong>');
-		//$lnuValue = rand();
-		//$lnuValue = date('d-m-Y');
-		$lobCell->setHtml('2018-05-15');
-		$lobCell->setValue('2018-05-15');
-		//$lobCell->setHtml($lstIdExcel);
-		//$lobCell->setValue($lstIdExcel);
+		$lobCell->setClass('_cell');
+		$lobCell->setCapsulaHtml('<strong>##</strong>');
+		$lnuValue   = rand();
+		$lobCell->setHtml($lnuValue);
+		$lobCell->setValue($lnuValue);
 		$lobRow->setCell($lobCell);
 	}
 	$lobSection->setRow($lobRow);

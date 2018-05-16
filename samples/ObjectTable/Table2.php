@@ -30,7 +30,7 @@ $lobRow = new Row();
 for ( $xTh=0; $xTh < $lnuColumnas ; $xTh++ )
 { 
 	$lobCell = new Cell();
-	$lobCell->setClass('excel_cell _cell_header');
+	$lobCell->setClass('_cell_header');
 	$lobCell->setHtml($lobCell->mstColumnaNumeroCadena($xTh));
 	$lobCell->setValue($lobCell->mstColumnaNumeroCadena($xTh));
 	$lobRow->setCell($lobCell);
@@ -54,9 +54,9 @@ for ($xTr=1; $xTr <=$lnuRowTbody ; $xTr++)
 		$lstIdExcel = $lobCell->getIdExcel();
 		$lobCell->setId($lstIdExcel);
 		if( $xTd == 10 )
-			$lobCell->setClass('excel_cell _cell_header');
+			$lobCell->setClass('_cell_header');
 		else
-			$lobCell->setClass('excel_cell _cell_Default');
+			$lobCell->setClass('_cell_Default');
 
 		
 		if( $xTr == 3 || $xTr == 6 || $xTr == 9 )
@@ -104,7 +104,7 @@ $lobRow = new Row();
 for ( $xTh=1; $xTh <= $lnuColumnas ; $xTh++ )
 { 
 	$lobCell = new Cell();
-	$lobCell->setClass('excel_cell _cell_header');
+	$lobCell->setClass('_cell_header');
 	$lobCell->setHtml('Tfoot '.$xTh);
 	$lobCell->setValue('Tfoot '.$xTh);
 	$lobRow->setCell($lobCell);

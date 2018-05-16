@@ -182,7 +182,7 @@ foreach ( $layDatosTabla as $layMes => $layDatosMeses)
 			if( $lnuCountCell == 0 || $lnuCountCell == count($layDatos)-1 )
 				$lobCell->setCapsulaHtml('<strong>##</strong>');
 
-			$lobCell->setClass('excel_cell _cell_Default');
+			$lobCell->setClass('_cell_Default');
 
 			if( $lnuCountCell != 0 )
 				$lobCell->setDataType('Money_f_3_before_USD');
