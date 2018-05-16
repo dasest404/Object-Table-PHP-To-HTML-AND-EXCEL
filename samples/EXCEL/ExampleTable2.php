@@ -8,11 +8,8 @@ include '../ObjectTable/Table2.php';
 
 //-->******** Print the Table in Excel ********<--//
 $lobTableExcel = new TableToExcel();
-$lobTableExcel->setSpreadsheetPassword('123');
-$lobTableExcel->setSpreadsheetBlocked(true);
 $lobTableExcel->setStorageDirectory('Excel/');
 $lobTableExcel->setFileCss( '../css/Table.css' );
-//$lobTableExcel->setActiveSheet(0,'Exaple1');
 $lobTableExcel->setMarginCaprion(1);
 $lobTableExcel->setObjectTable($lobTable);
 $lobTableExcel->mPrintObjectTableInExcel();
