@@ -52,6 +52,7 @@ caption.CaptionT3{
     border: 1px solid #cccccc;
     color: #ffffff;
     font-weight: bold;
+    font-size: 15px;
     padding: 2px 4px;
     text-align: center;
 }
@@ -66,14 +67,16 @@ caption.CaptionT3{
 	width: 4px;
 }
 .celda_normal {
-    /*background-color: #fff;*/
+    background-color: #ffffff;
     border: 1px solid #cccccc;
     padding: 2px 4px;
+    font-size: 13px;
+    color: #0000ff;
 }
 
 .excel_cell{
 	border: 1px solid #CCCCCC;
-	color: #222;
+	color: #222222;
 	text-align: center;
 	font-size: 13px;
 	font-weight:  normal;
@@ -82,7 +85,7 @@ caption.CaptionT3{
 	empty-cells: show;
 }
 ._cell_header{
-	border: 1px solid #0000FF;
+	border: 1px solid #CCCCCC;
 	color: #222222;
 	text-align: center;
 	font-weight:  normal;
@@ -94,7 +97,7 @@ caption.CaptionT3{
 	font-size: 15px;
 }
 ._cell_Default{
-	border: 1px solid #CB4335;
+	border: 1px solid #CCCCCC;
 	color: #931D1D;
 	font-family:initial;
 	font-size: 13px;
@@ -102,7 +105,32 @@ caption.CaptionT3{
 	padding: 4px;
 	white-space: pre-line;
 	empty-cells: show;
-	background-color: antiquewhite;
+	background-color: #ffffff;
+	text-align: left;
+}
+
+._header{
+	border: 1px solid #0000FF;
+	color: #222222;
+	text-align: center;
+	font-weight:  normal;
+	padding: 4px;
+	white-space: pre-line;
+	empty-cells: show;
+	background-color: #EEEEEE;
+	font-weight: bold;
+	font-size: 15px;
+}
+._cell{
+	border: 1px solid #CB4335;
+	color: #222222;
+	font-family:initial;
+	font-size: 13px;
+	font-weight:  normal;
+	padding: 4px;
+	white-space: pre-line;
+	empty-cells: show;
+	background-color: #ffffff;
 	text-align: left;
 }
 
