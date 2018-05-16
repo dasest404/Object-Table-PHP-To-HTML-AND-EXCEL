@@ -344,6 +344,7 @@ class TableToExcel
 						$lstFinalCell   = $lobCell->getIdExcel();
 						$lstText        = $lobCaption->getCaptionText ();
 
+						//$this->lobActiveSheet->duplicateStyle( $this->lobActiveSheet->getStyle($lstInitialCell), $lstInitialCell.':'.$lstFinalCell );
 						$this->lobActiveSheet->mergeCells($lstInitialCell.':'.$lstFinalCell);
 						$this->lobActiveSheet->setCellValue($lstInitialCell, $lstText);
 					}
@@ -481,6 +482,7 @@ class TableToExcel
 
 									if( $lnuColspan > 1 )
 									{
+										$this->lobActiveSheet->duplicateStyle( $this->lobActiveSheet->getStyle($lstIdCell), $lstInitialCell.':'.$lstFinalCell );
 										$this->lobActiveSheet->mergeCells($lstInitialCell.':'.$lstFinalCell);
 										$lnuCells += $lnuColspan;
 									}
@@ -488,7 +490,10 @@ class TableToExcel
 										$lnuCells++;
 
 									if( $lnuRowspan > 1 )
+									{
+										$this->lobActiveSheet->duplicateStyle( $this->lobActiveSheet->getStyle($lstIdCell), $lstInitialRow.':'.$lstFinalRow );
 										$this->lobActiveSheet->mergeCells($lstInitialRow.':'.$lstFinalRow);
+									}
 
 									$this->lobActiveSheet->setCellValue($lstIdCell, $lstValue);
 								}	
