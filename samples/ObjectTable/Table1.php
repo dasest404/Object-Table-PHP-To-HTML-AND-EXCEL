@@ -18,7 +18,7 @@ $lobTable->setTitle('Es la primer tabla.');
 
 //-->******** Create Caption of the Table ********<--//
 $lobCaption  = new Caption();
-$lobCaption->setCaption('Table 1: Table Caption Object Test.','cap1');
+$lobCaption->setCaption('Table 1: Table Caption Object Test.','cap1','caption');
 $lobTable->setCaption( $lobCaption );
 
 //-->******** Create Header (Thead) ********<--//

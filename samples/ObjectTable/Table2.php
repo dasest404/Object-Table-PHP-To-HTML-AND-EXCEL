@@ -17,7 +17,7 @@ $lobTable->setClass('fht-table');
 
 //-->******** Create Caption of the Table ********<--//
 $lobCaption  = new Caption();
-$lobCaption->setCaption('Table 2: Table Caption Object Test.','cap2','','color: #c5c; font-weight: 700;caption-side: bottom;padding-top: 11px;');
+$lobCaption->setCaption('Table 2: Table Caption Object Test.','cap2','','color: #cc55cc; font-weight: 700;caption-side: bottom;padding-top: 11px;');
 $lobTable->setCaption( $lobCaption );
 
 //-->******** Create Header section(Thead) ********<--//
