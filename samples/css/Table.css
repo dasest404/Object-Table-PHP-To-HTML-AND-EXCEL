@@ -17,14 +17,16 @@
 	position: relative;
 }
 
-caption.caption{
+.caption{
 	font-size: 13px;
 	font-weight: bold;
 	font-family: cursive;
 	color: #c5c5c5;
+	caption-side: top;
 	padding-bottom: 5px;
+	text-align: center;
 }
-caption.CaptionT3{
+.CaptionT3{
     background-color: #cccccc;
     caption-side: bottom;
     color: #6D6564;
