@@ -18,21 +18,23 @@ use PhpOffice\PhpSpreadsheet\Style\Font;
 */
 class StyleExcel
 {
-	private $lstFileCss        = '';
-	private $lstSelector       = '';
-	private $lstValueFormat    = '';
-	private $lstDataTypeFormat = '';
-	private $lnuTotalCss       =  0;
-	private $lobCss            = NULL;
-	private $lobNumberFormat   = NULL;
-	private $layFileCss        = array();
-	private $layStyleExcel     = array();
-	private $layColorName      = array();
-	private $layTypeColor      = array();
-	private $layColorString    = array();
-	private $layColorStringKey = array();
-	private $layColorNameKey   = array();
-	private $layUnits          = array();
+	private $lstFileCss           = '';
+	private $lstSelector          = '';
+	private $lstValueFormat       = '';
+	private $lstDataTypeFormat    = '';
+	private $lstPositionCaption   = 'top';
+	private $lnuTotalCss          =  0;
+	private $lobCss               = NULL;
+	private $lobNumberFormat      = NULL;
+	private $lboIsCaption         = false;
+	private $layFileCss           = array();
+	private $layStyleExcel        = array();
+	private $layColorName         = array();
+	private $layTypeColor         = array();
+	private $layColorString       = array();
+	private $layColorStringKey    = array();
+	private $layColorNameKey      = array();
+	private $layUnits             = array();
 	
 	function __construct()
 	{
@@ -47,10 +49,14 @@ class StyleExcel
 		$this->layColorNameKey   = array_keys($this->layColorName);
 	}
 
-	public function setStyleSelector( $pstValue = '' ){ $this->lstSelector = $pstValue;}
-	public function getStyleSelector(){ return $this->lstSelector;}
-	public function getNumberFormat(){ return $this->lstDataTypeFormat; }
-	public function getValueNumberFormat(){ return $this->lstValueFormat; }
+	public function setStyleSelector( $pstValue = ''  ){ $this->lstSelector  = $pstValue;}
+	public function setIsCaption    ( $pboValue = true){ $this->lboIsCaption = $pboValue;}
+
+	public function getStyleExcel       (){ return $this->layStyleExcel;       }
+	public function getStyleSelector    (){ return $this->lstSelector;         }
+	public function getNumberFormat     (){ return $this->lstDataTypeFormat;   }
+	public function getValueNumberFormat(){ return $this->lstValueFormat;      }
+	public function getPositionCaption  (){ return $this->lstPositionCaption;  }
 
 	public function setNumberFormat( $pstValue, $plstDataType )
 	{
@@ -101,13 +107,7 @@ class StyleExcel
 		$this->layStyleExcel['font']['color']['rgb'] 	= $lstFontColor;
 	}
 
-	public function getStyleExcel()
-	{
-		$this->mCssParserToExcel();
-		return $this->layStyleExcel;
-	}
-
-	private function mCssParserToExcel()
+	public function mCssParserToExcel()
 	{
 		$this->layStyleExcel								= array();	
 		$this->layStyleExcel['font']						= array();
@@ -182,7 +182,7 @@ class StyleExcel
 			else
 				$this->layStyleExcel['alignment']['horizontal']	= Alignment::HORIZONTAL_LEFT;
 		}
-		
+
 		//-- Font --//
 		//-->Without support for font: font-style font-variant font-weight font-size/line-height font-family|caption|icon|menu|message-box|small-caption|status-bar|initial|inherit; 
 		$layFontStringName  = array('initial'=>'Arial','inherit'=>'Arial');
@@ -195,7 +195,7 @@ class StyleExcel
 		
 		if( $lstFontFamily  != '' )
 		{
-			if( !in_array($lstFontFamily, $layFontStringName))
+			if( in_array($lstFontFamily, $layFontStringName))
 				$lstFontFamily = $layFontStringName[$lstFontFamily];
 
 			$this->layStyleExcel['font']['name']	= $lstFontFamily;
@@ -223,11 +223,21 @@ class StyleExcel
 		
 		if( $lstFontColor != '' )
 		{
-			$lstFontColor	= $this->mValidateColor($lstFontColor );				
-			$this->layStyleExcel['font']['color']['rgb'] = $lstFontColor;
+			$lstFontColor	= $this->mValidateColor($lstFontColor );
+			$this->layStyleExcel['font']['color']['argb'] = $lstFontColor;
 		}
+
+		//-- Position Caption --//
+		if( $this->lboIsCaption )
+		{
+			$layPositionCaption       = array('top','bottom');
+			$lstCaptionSide           = $this->lobCss->getProperty( $this->lstSelector, 'caption-side' );
+			$this->lstPositionCaption = ( in_array($lstCaptionSide, $layPositionCaption) )? $lstCaptionSide : 'top';
+		}
+
+		return true;
 	}
-	
+
 	private function getStyleBackground()
 	{
 		$lstBackground		  = $this->lobCss->getProperty( $this->lstSelector, 'background' );
