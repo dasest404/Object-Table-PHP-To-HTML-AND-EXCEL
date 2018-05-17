@@ -38,7 +38,7 @@ class TableToExcel
 	private $lstSpreadsheetPassword     = 'Spreadsheet1234';
 	private $lstSheeName                = 'sheet 1';
 	private $lstActiveSheetByName       = 'sheet 1';
-	private $lstPositionCaprion         = 'top';
+	private $lstPositionCaption         = 'top';
 	private $lnuActiveSheetIndex        = 0;
 	private $lnuMarginCaprion           = 0;
 	private $lobActiveSheet             = NULL;
@@ -319,7 +319,31 @@ class TableToExcel
 				{
 					if( $lobCaption->getCaptionText () != '' )
 					{
-						if( $this->lstPositionCaprion == 'top' )
+						$lstClass = ( $lobCaption->getCaptionClass() != '' )? $lobCaption->getCaptionClass() : '';
+						$lstStyle = ( $lobCaption->getCaptionStyle() != '' )? $lobCaption->getCaptionStyle() : '';
+						$lstAlign = ( $lobCaption->getCaptionAlign() != '' )? $lobCaption->getCaptionAlign() : '';
+
+						$this->lobStyleExcel->setIsCaption();
+
+						if($lstClass != '' && $lstStyle == '')
+						{
+							$this->lobStyleExcel->setStyleSelector('.'.$lstClass);
+							$this->lobStyleExcel->mCssParserToExcel();
+						}
+
+						if($lstStyle != '')
+						{
+							$this->lobStyleExcel->setStyleSelector('.styleCaptionn');
+							$this->lobStyleExcel->setStyleDataCss('.styleCaptionn'.'{'.$lstStyle.'}');
+							$this->lobStyleExcel->mCssParserToExcel();
+						}
+
+						if($lstAlign != '')
+							$this->lobStyleExcel->setStyleAlignment($lstAlign);
+
+						$this->lstPositionCaption = $this->lobStyleExcel->getPositionCaption();
+
+						if( $this->lstPositionCaption == 'top' )
 						{
 							$lnuRowsCap = $lnuRows;
 
@@ -331,7 +355,7 @@ class TableToExcel
 								$this->lobActiveSheet->insertNewRowBefore($lnuRows, $this->lnuMarginCaprion);
 							}
 						}
-						elseif( $this->lstPositionCaprion == 'bottom' )
+						elseif( $this->lstPositionCaption == 'bottom' )
 						{
 							$lnuRowsCap = $lnuLengthRows+1+$this->lnuMarginCaprion;
 						}
@@ -344,12 +368,14 @@ class TableToExcel
 						$lstFinalCell   = $lobCell->getIdExcel();
 						$lstText        = $lobCaption->getCaptionText ();
 
-						//$this->lobActiveSheet->duplicateStyle( $this->lobActiveSheet->getStyle($lstInitialCell), $lstInitialCell.':'.$lstFinalCell );
+						$this->lobActiveSheet->getStyle($lstInitialCell)->applyFromArray( $this->lobStyleExcel->getStyleExcel() );
+						$this->lobActiveSheet->duplicateStyle( $this->lobActiveSheet->getStyle($lstInitialCell), $lstInitialCell.':'.$lstFinalCell );
 						$this->lobActiveSheet->mergeCells($lstInitialCell.':'.$lstFinalCell);
 						$this->lobActiveSheet->setCellValue($lstInitialCell, $lstText);
 					}
 				}
 
+				$this->lobStyleExcel->setIsCaption(false);
 				$lnuMaxRows = $this->lobActiveSheet->getHighestRow();
 
 				foreach ( $laySections as $laySection => $lobSection )
@@ -432,12 +458,16 @@ class TableToExcel
 									$lobCellStyle = $this->lobActiveSheet->getStyle($lstIdCell);
 
 									if($lstClass != '' && $lstStyle == '')
+									{
 										$this->lobStyleExcel->setStyleSelector('.'.$lstClass);
+										$this->lobStyleExcel->mCssParserToExcel();
+									}
 
 									if($lstStyle != '')
 									{
 										$this->lobStyleExcel->setStyleSelector('.styleCell'.$lstIdCell);
 										$this->lobStyleExcel->setStyleDataCss('.styleCell'.$lstIdCell.'{'.$lstStyle.'}');
+										$this->lobStyleExcel->mCssParserToExcel();
 									}
 
 									if($lstAlign != '')
@@ -449,7 +479,7 @@ class TableToExcel
 									if($lstClass != '' || $lstStyle != '' || $lstAlign != '' || $lstfont != '' )
 										$lobCellStyle->applyFromArray($this->lobStyleExcel->getStyleExcel());
 
-									//-->NumberFormat
+									//-->NumberFormat 
 
 									if( $lstDataType != '' )
 									{
