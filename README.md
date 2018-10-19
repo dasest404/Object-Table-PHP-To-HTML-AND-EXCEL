@@ -12,26 +12,26 @@ In order to install, composer is required.
 ## Examples:
 
 ## Example 1:
-## HTML:
+## In HTML:
 ![alt text](samples/img/Example1Html.PNG "Example of table HTML 1")
-## EXCEL:
+## In EXCEL:
 ![alt text](samples/img/Example1Excel.PNG "Example of table EXCEL 1")
 
 ## Example 2:
-## HTML:
+## In HTML:
 ![alt text](samples/img/Example2Html.PNG "Example of table HTML 2")
-## EXCEL:
+## In EXCEL:
 ![alt text](samples/img/Example2Excel.PNG "Example of table EXCEL 2")
 
 ## Example 3:
-## HTML:
+## In HTML:
 ![alt text](samples/img/Example3Html.PNG "Example of table HTML 3")
-## EXCEL:
+## In EXCEL:
 ![alt text](samples/img/Example3Excel.PNG "Example of table EXCEL 3")
 
 ## Example 4:
-## HTML:
+## In HTML:
 ![alt text](samples/img/Example4Html.PNG "Example of table HTML 4")
-## EXCEL:
+## In EXCEL:
 ![alt text](samples/img/Example4Excel.PNG "Example of table EXCEL 4")
 
